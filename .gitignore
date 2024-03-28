@@ -4,6 +4,7 @@
 bin
 # Package Files #
 *.jar
+!uSkyBlock-4.0.0-ALPHA.jar
 *.war
 *.ear
 **/target
