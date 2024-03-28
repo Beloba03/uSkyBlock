@@ -1,14 +1,19 @@
 # uSkyBlock
 
-This is a continually updated and custom version of Talabrek's Ultimate SkyBlock plugin.
+This is a single update of Talabrek's Ultimate SkyBlock plugin made for 1.20.4.
+Plugin has been simply made to work and has not been thoroughly tested.
 
-We are on [Spigot](https://www.spigotmc.org/resources/uskyblock-revived.66795/). Currently [Open Issues](https://github.com/rlf/uSkyBlock/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20-label%3A%22T%20ready%20for%20test%22%20-label%3A%22T%20tested%20awaiting%20reporter%22)
+# USE AT YOUR OWN RISK
+
+
+
+
 
 # Installation
 
 This version depends on the following plugins:
 
-* Spigot/Paper 1.19-R0.1-SNAPSHOT
+* Spigot/Paper 1.20.4
 * Vault 1.7.x
 * WorldEdit 7.2.13
 * WorldGuard 7.0.8-SNAPSHOT
