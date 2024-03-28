@@ -11,6 +11,9 @@ Plugin has been simply made to work and has not been thoroughly tested.
 
 # Installation
 
+## For 1.20.4 download here:
+https://github.com/Beloba03/uSkyBlock/releases/tag/v4.0.0
+
 This version depends on the following plugins:
 
 * Spigot/Paper 1.20.4
