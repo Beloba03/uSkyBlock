@@ -1,9 +1,5 @@
 package dk.lockfuglsang.minecraft.po;
 
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -17,6 +13,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 
 /**
  * Convenience util for supporting static imports.
@@ -229,11 +229,39 @@ public enum I18nUtil {
 
         private String format(String propKey, Object[] args) {
             try {
-                return new MessageFormat(propKey, getLocale()).format(args);
+                // First, escape all single quotes since we'll be adding our own quotes for escaping other characters
+                String escapedPropKey = propKey.replace("'", "''");
+                
+                // Check for unmatched braces
+                if (hasUnmatchedBraces(escapedPropKey)) {
+                    // Escape only '{' since unmatched '}' are not problematic in MessageFormat
+                    escapedPropKey = escapedPropKey.replace("{", "'{'");
+                }
+                
+                return new MessageFormat(escapedPropKey, getLocale()).format(args);
             } catch (IllegalArgumentException e) {
                 throw new IllegalArgumentException("Problem with: '" + propKey + "'", e);
             }
         }
+        
+        /**
+         * THIS WAS USED AS A FIX FOR AN UNAMTCHED { ERROR. NO IDEA IF IT BREAKS ANYTHING!
+         * Checks if the given string has unmatched '{' braces.
+         * @param s the string to check
+         * @return true if there is an unmatched '{', false otherwise
+         */
+        private boolean hasUnmatchedBraces(String s) {
+            int openBraces = 0;
+            for (char c : s.toCharArray()) {
+                if (c == '{') openBraces++;
+                else if (c == '}') {
+                    if (openBraces > 0) openBraces--;
+                    // Don't need to handle unmatched '}' because MessageFormat ignores them
+                }
+            }
+            return openBraces > 0; // true if there are unmatched '{'
+        }
+        
 
         public Locale getLocale() {
             return locale;

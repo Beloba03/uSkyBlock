@@ -9,9 +9,15 @@ import org.bukkit.entity.Player;
 import org.bukkit.profile.PlayerProfile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.bukkit.BanEntry;
 
 import java.util.Map;
 import java.util.UUID;
+import java.time.Instant;
+import java.time.Duration;
+import java.util.Date;
+
+
 
 public class NullPlayer implements OfflinePlayer {
     public static final NullPlayer INSTANCE = new NullPlayer();
@@ -21,6 +27,16 @@ public class NullPlayer implements OfflinePlayer {
     @Override
     public boolean isOnline() {
         return false;
+    }
+
+    @Override
+    public Location getLocation() {
+        return null;
+    }
+
+    @Override
+    public Location getRespawnLocation() {
+        return null;
     }
 
     @Override
@@ -103,6 +119,25 @@ public class NullPlayer implements OfflinePlayer {
     public void setStatistic(@NotNull Statistic statistic, int newValue) throws IllegalArgumentException {
 
     }
+    @Override
+    public BanEntry ban(String reason, Instant expiration, String source) {
+        // Since this player is "null", decide on an appropriate no-op or dummy implementation
+        return null;
+    }
+    
+    @Override
+    public BanEntry ban(String reason, Duration duration, String source) {
+        // Since this player is "null", decide on an appropriate no-op or dummy implementation
+        return null;
+    }
+
+    @Override
+    public BanEntry ban(String reason, Date expiration, String source) {
+        // Implement according to the interface's expectations.
+        // Since NullPlayer might represent a non-operative concept, decide how to handle this method.
+        return null; // Again, be cautious with returning null.
+    }
+    
 
     @Override
     public int getStatistic(@NotNull Statistic statistic) throws IllegalArgumentException {

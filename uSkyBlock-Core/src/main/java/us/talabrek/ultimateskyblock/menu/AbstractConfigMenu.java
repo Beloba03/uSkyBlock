@@ -63,16 +63,18 @@ public class AbstractConfigMenu {
 
     protected int getPage(String s) {
         String format = tr("\u00a77Page {0}");
+        System.out.println("Formatted string for parsing: " + format); // Debugging line
         try {
             Object[] parsed = new MessageFormat(format).parse(s);
             if (parsed != null && parsed.length > 0) {
                 return Integer.parseInt("" + parsed[0]);
             }
         } catch (ParseException e) {
-            // Ignore
+            e.printStackTrace(); // Consider logging this exception as well for more insight.
         }
         return 1;
     }
+    
 
     protected ItemStack createItem(String item) {
         if (item == null) {

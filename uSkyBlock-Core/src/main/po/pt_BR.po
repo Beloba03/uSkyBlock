@@ -2237,7 +2237,7 @@ msgid "{0}§e has invited you to join their island!"
 msgstr "{0}§e te convidou para juntar-se a ilha dele!"
 
 msgid "§f/island [accept/reject]§e to accept or reject the invite."
-msgstr "§f/island [accept/reject§e para aceitar ou rejeitar um convite."
+msgstr "§f/island [accept/reject]§e para aceitar ou rejeitar um convite."
 
 msgid "§4WARNING: You will lose your current island if you accept!"
 msgstr "§4AVISO: Você vai perder sua ilha atual se você aceitar!"
